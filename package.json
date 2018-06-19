@@ -1,0 +1,19 @@
+{
+  "name": "ad_placement_excercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Andy Hang",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5"
+  }
+}
