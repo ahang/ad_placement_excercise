@@ -6,7 +6,7 @@ const placement = 'placement.csv';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
+app.get('/getPlacementData', (req, res) => {
   let placementData = [];
   fs.createReadStream(placement)
   .pipe(csv())
@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
   })
   .on('end', (data) => {
     console.log(placementData);
+    res.json(placementData);
   })
-  res.send({ 'Hello': 'World' });
 });
 
 app.listen(PORT, () => {
