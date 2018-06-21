@@ -6,13 +6,13 @@ const Table = ({ placements }) => {
     <table>
       <thead>
         <tr>
-          <td>id</td>
-          <td>name</td>
-          <td>start</td>
-          <td>end</td>
-          <td>cpm</td>
-          <td>impressions</td>
-
+          <td>ID</td>
+          <td>Name</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>CPM</td>
+          <td>Total Impressions</td>
+          <td>CPM * Total Impressions</td>
         </tr>
       </thead>
       <tbody>
