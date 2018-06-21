@@ -6,14 +6,14 @@ class Table extends Component {
   handleRenderTableRow() {
     const { placements } = this.props;
     placements.map(row => {
-      this.handleTotalImpressions(row)
+      this.getTotalImpressions(row)
       return (
         <TableRow row={row} />
       )
     })
   }
 
-  handleTotalImpressions(row) {
+  getTotalImpressions(row) {
       axios.get(`getTotalImpressions/${row.id}`)
       .then(response => {
         row['impressions'] = response.data;
