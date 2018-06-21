@@ -1,4 +1,5 @@
 import React from 'react';
+import NumberFormat from 'react-number-format';
 
 const TableRow = ({ row }) => {
   console.log(row);
@@ -8,11 +9,13 @@ const TableRow = ({ row }) => {
       <td>{row.name}</td>
       <td>{row.start}</td>
       <td>{row.end}</td>
-      <td>$ {row.cpm}</td>
+      <NumberFormat value={row.cpm} displayType={'text'} prefix={'$'} renderText={value => <td>{value}</td>} />      
       <td>{row.impressions}</td>
-      <td>$ {row.totalCPM}</td>
+      <NumberFormat value={row.totalCPM} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <td>{value}</td>} />      
     </tr>
   )
 }
 
 export default TableRow;
+
+//<NumberFormat value={2456981} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
