@@ -15,8 +15,9 @@ app.get('/getPlacementData', (req, res) => {
   })
 });
 
-app.get('/getTotalImpressions/:id', (req, res) => {
+app.get('/getTotalImpressions/:id/:cpm', (req, res) => {
   const id = req.params.id;
+  const cpm = req.params.cpm;
   csv()
   .fromFile(delivery)
   .then((deliveryObj) => {
@@ -26,7 +27,8 @@ app.get('/getTotalImpressions/:id', (req, res) => {
         totalImpressions = totalImpressions + parseInt(delivery.impressions);
       }
     })
-    res.json(totalImpressions);
+    const totalCPM = totalImpressions * cpm;
+    res.json({ totalImpressions, totalCPM });
   })
 })
 

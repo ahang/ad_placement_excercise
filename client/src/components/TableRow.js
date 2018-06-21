@@ -8,8 +8,9 @@ const TableRow = ({ row }) => {
       <td>{row.name}</td>
       <td>{row.start}</td>
       <td>{row.end}</td>
-      <td>{row.cpm}</td>
+      <td>$ {row.cpm}</td>
       <td>{row.impressions}</td>
+      <td>$ {row.totalCPM}</td>
     </tr>
   )
 }
