@@ -15,16 +15,15 @@ class App extends Component {
   componentDidMount() {
     axios.get('/getPlacementData')
     .then(response => {
-      this.setState({ placemenetData: response.data });
+      this.setState({ placemenetData: response.data })
     })
   }
 
   render() {
     return (
-      <div className="App">
-        {this.state.placemenetData.length > 0 ?
-          <Table placement={this.state.placemenetData} /> : 
-          <p>Loading...</p> 
+      <div>
+        {this.state.placemenetData.length > 0 ? 
+          <Table placements={this.state.placemenetData} /> : <p>Loading</p>
         }
       </div>
     );

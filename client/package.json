@@ -5,6 +5,9 @@
   "proxy": {
     "/getPlacementData": {
       "target": "http://localhost:5000"
+    },
+    "/getTotalImpressions": {
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
