@@ -49,11 +49,14 @@ app.get("/getCustom/:start_date/:end_date", (req, res) => {
   const eDate = Date.parse(moment(req.params.end_date).format("MM/D/YYYY"));
   let dataRange = [];
   const placementImpressions = {
-    placement1: 0,
-    placement2: 0,
-    placement3: 0,
-    placement4: 0
+    placement1: { id: "1", impressions: 0 },
+    placement2: { id: "2", impressions: 0 },
+    placement3: { id: "3", impressions: 0 },
+    placement4: { id: "4", impressions: 0 },
+    total_impressions: 0,
+    total_cpm: 0,
   };
+  console.log(placementImpressions);
   dataRange = deliveryObj.filter(placement => {
     const pDate = Date.parse(placement.date);
     if (pDate >= sDate && pDate <= eDate) {
@@ -64,30 +67,59 @@ app.get("/getCustom/:start_date/:end_date", (req, res) => {
   dataRange.forEach(data => {
     switch (data.placement_id) {
       case "1":
-        placementImpressions["placement1"] =
-          placementImpressions["placement1"] + parseInt(data.impressions);
+        placementImpressions["placement1"]["impressions"] =
+          placementImpressions["placement1"]["impressions"] +
+          parseInt(data.impressions);
         break;
       case "2":
-        placementImpressions["placement2"] =
-          placementImpressions["placement2"] + parseInt(data.impressions);
+        placementImpressions["placement2"]["impressions"] =
+          placementImpressions["placement2"]["impressions"] +
+          parseInt(data.impressions);
         break;
       case "3":
-        placementImpressions["placement3"] =
-          placementImpressions["placement3"] + parseInt(data.impressions);
+        placementImpressions["placement3"]["impressions"] =
+          placementImpressions["placement3"]["impressions"] +
+          parseInt(data.impressions);
         break;
       case "4":
-        placementImpressions["placement4"] =
-          placementImpressions["placement4"] + parseInt(data.impressions);
+        placementImpressions["placement4"]["impressions"] =
+          placementImpressions["placement4"]["impressions"] +
+          parseInt(data.impressions);
+        break;
+      default:
+        return data;
+    }
+    handleTotalCPM(placementImpressions, res);
+  });
+});
+
+const handleTotalCPM = (data, res) => {
+  for(let placement in data) {
+    switch (data[placement]['id']) {
+      case "1":
+        cpm = placementObj[0]["cpm"];
+        data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
+        data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions']);
+        break;
+      case "2":
+        cpm = placementObj[1]["cpm"];
+        data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
+        data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
+        break;
+      case "3":
+        cpm = placementObj[2]["cpm"];
+        data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
+        data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
+        break;
+      case "4":
+        cpm = placementObj[3]["cpm"];
+        data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
+        data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
         break;
     }
-  });
-  console.log(dataRange);
-  console.log(placementImpressions);
-  // dataRange.map(data => {
-
-  // });
-  // console.log(placementImpressions);
-});
+  }
+  res.json({ data });
+};
 
 app.listen(PORT, () => {
   console.log(`Server Running`);
