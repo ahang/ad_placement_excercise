@@ -5,8 +5,7 @@ import NumberFormat from 'react-number-format';
 const CustomValue = ({ info }) => {
   if(info.showData) {
     const { startDate, endDate } = info;
-    const { total_impressions, total_cpm } = info.customData.data;
-    console.log(total_impressions)
+    const { total_impressions, total_cpm } = info.customData;
     return <div>
         <p>
           Total ({moment(startDate).format("MM/D/YYYY")} - {moment(endDate).format("MM/D/YYYY")}):

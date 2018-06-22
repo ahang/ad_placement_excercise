@@ -18,11 +18,11 @@ class CustomDate extends Component {
   }
 
   handleOnStartDateChange(event) {
-    this.setState({ startDate: event.target.value });
+    this.setState({ startDate: event.target.value, showData: false });
   }
 
   handleOnEndDateChange(event) {
-    this.setState({ endDate: event.target.value });
+    this.setState({ endDate: event.target.value, showData: false });
   }
 
   handleOnSubmit(event) {
