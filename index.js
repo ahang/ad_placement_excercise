@@ -119,6 +119,7 @@ const handleTotalCPM = (data, res) => {
     }
   }
   res.json({ data });
+  placementImpressions = {};
 };
 
 app.listen(PORT, () => {

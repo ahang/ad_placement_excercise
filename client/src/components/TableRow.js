@@ -1,5 +1,5 @@
-import React from "react";
-import NumberFormat from "react-number-format";
+import React from 'react';
+import NumberFormat from 'react-number-format';
 
 const TableRow = ({ row }) => {
   return (
@@ -10,16 +10,16 @@ const TableRow = ({ row }) => {
       <td>{row.end}</td>
       <NumberFormat
         value={row.cpm}
-        displayType={"text"}
-        prefix={"$"}
+        displayType={'text'}
+        prefix={'$'}
         renderText={value => <td>{value}</td>}
       />
       <td>{row.impressions}</td>
       <NumberFormat
         value={row.totalCPM}
-        displayType={"text"}
+        displayType={'text'}
         thousandSeparator={true}
-        prefix={"$"}
+        prefix={'$'}
         renderText={value => <td>{value}</td>}
       />
     </tr>
