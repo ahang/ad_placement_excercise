@@ -53,7 +53,7 @@ class CustomDate extends Component {
           />
         </label>
         <input type='submit' value='Submit' />
-        <CustomValue info={this.state} showData={this.state.showData}/>
+        <CustomValue info={this.state} showData={this.state.showData} />
       </form>
     );
   }
