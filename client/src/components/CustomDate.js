@@ -27,7 +27,6 @@ class CustomDate extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-    this.setState({ customData: {}, showData: false });
     const formatStartDate = moment(this.state.startDate).format('MM-D-YY');
     const formatEndDate = moment(this.state.endDate).format('MM-D-YY');
     axios.get(`getCustom/${formatStartDate}/${formatEndDate}`)

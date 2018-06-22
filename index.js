@@ -56,7 +56,6 @@ app.get("/getCustom/:start_date/:end_date", (req, res) => {
     total_impressions: 0,
     total_cpm: 0,
   };
-  console.log(placementImpressions);
   dataRange = deliveryObj.filter(placement => {
     const pDate = Date.parse(placement.date);
     if (pDate >= sDate && pDate <= eDate) {
@@ -119,7 +118,6 @@ const handleTotalCPM = (data, res) => {
     }
   }
   res.json({ data });
-  placementImpressions = {};
 };
 
 app.listen(PORT, () => {
