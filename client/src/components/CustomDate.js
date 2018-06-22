@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import CustomValue from './CustomValue';
 
 class CustomDate extends Component {
   constructor() {
     super();
     this.state = {
       startDate: '',
-      endDate: ''
+      endDate: '',
+      customData: {},
+      showData: false,
     };
     this.handleOnEndDateChange = this.handleOnEndDateChange.bind(this);
     this.handleOnStartDateChange = this.handleOnStartDateChange.bind(this);
@@ -27,7 +30,7 @@ class CustomDate extends Component {
     const formatStartDate = moment(this.state.startDate).format('MM-D-YY');
     const formatEndDate = moment(this.state.endDate).format('MM-D-YY');
     axios.get(`getCustom/${formatStartDate}/${formatEndDate}`)
-    .then(res => console.log(res));
+    .then(response => this.setState({ customData: response.data, showData: true }));
   }
 
   render() {
@@ -50,6 +53,7 @@ class CustomDate extends Component {
           />
         </label>
         <input type='submit' value='Submit' />
+        <CustomValue info={this.state} showData={this.state.showData}/>
       </form>
     );
   }
