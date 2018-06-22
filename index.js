@@ -66,6 +66,7 @@ app.get("/getCustom/:start_date/:end_date", (req, res) => {
   dataRange.forEach(data => {
     switch (data.placement_id) {
       case "1":
+        console.log('placement', data.placement_id)
         placementImpressions["placement1"]["impressions"] =
           placementImpressions["placement1"]["impressions"] +
           parseInt(data.impressions);
@@ -99,21 +100,25 @@ const handleTotalCPM = (data, res) => {
         cpm = placementObj[0]["cpm"];
         data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
         data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions']);
+        data[placement]['impressions'] = 0;
         break;
       case "2":
         cpm = placementObj[1]["cpm"];
         data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
         data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
+        data[placement]['impressions'] = 0;
         break;
       case "3":
         cpm = placementObj[2]["cpm"];
         data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
         data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
+        data[placement]['impressions'] = 0;
         break;
       case "4":
         cpm = placementObj[3]["cpm"];
         data['total_cpm'] = (parseInt(data[placement]['impressions']) * cpm) + data['total_cpm'];
         data['total_impressions'] = data['total_impressions'] + parseInt(data[placement]['impressions'])
+        data[placement]['impressions'] = 0;
         break;
     }
   }
