@@ -2,7 +2,6 @@ import React from "react";
 import NumberFormat from "react-number-format";
 
 const TableRow = ({ row }) => {
-  console.log(row);
   return (
     <tr key={row.id}>
       <td>{row.id}</td>

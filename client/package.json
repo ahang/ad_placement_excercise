@@ -8,6 +8,9 @@
     },
     "/getTotalImpressions": {
       "target": "http://localhost:5000"
+    },
+    "/getCustom": {
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
